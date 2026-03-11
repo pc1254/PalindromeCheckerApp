@@ -1,16 +1,19 @@
 import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
-class PalindromeChecker {
-    boolean isPalindrome(String str) {
+class PalindromeChecker{
+    boolean isPalindrome(String str){
+        Queue<Character> q = new LinkedList<>();
         Stack<Character> s = new Stack<>();
-
-        for (int i = 0; i < str.length(); i++) {
+        for(int i=0;i<str.length();i++){
+            q.offer(str.charAt(i));
             s.push(str.charAt(i));
         }
 
-        for (int i = 0; i < str.length(); i++) {
-            if (s.pop() != str.charAt(i)) {
+        for(int i=0;i<str.length();i++){
+            if(q.poll() != s.pop()){
                 return false;
             }
         }
@@ -19,8 +22,8 @@ class PalindromeChecker {
     }
 }
 
-class Main {
-    public static void main(String[] args) {
+class Main{
+    public static void main(String[] args){
         PalindromeChecker c = new PalindromeChecker();
         Scanner input = new Scanner(System.in);
 
