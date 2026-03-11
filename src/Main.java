@@ -2,17 +2,14 @@ import java.util.Scanner;
 
 class PalindromeChecker{
     boolean isPalindrome(String str) {
-        String a = "";
-        for(int i=str.length()-1;i>=0;i--){
-            a+=str.charAt(i);
+        char[] c = str.toCharArray();
+        int start=0,end=str.length()-1;
+        while(start<end){
+            if(c[start]!= c[end]) return false;
+            start++;
+            end--;
         }
-        if(str.equals(a)){
-            return true;
-        }
-        else{
-            return false;
-        }
-
+        return true;
     }
 }
 
@@ -25,4 +22,3 @@ public class Main {
         System.out.println("Is it a palindrome string? ");
         System.out.println(c.isPalindrome(str) ? "Yes" : "No");
     }
-}
